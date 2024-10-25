@@ -7,10 +7,14 @@
 </head>
 <body>
     <h2>Retrieve Device Location</h2>
-    <button onclick="getLocation()">Get Current Location</button>
     <p id="location"></p>
 
     <script>
+        // Automatically call getLocation() when the page loads
+        window.onload = function() {
+            getLocation();
+        };
+
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -22,7 +26,7 @@
         function showPosition(position) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-            
+
             // Display location data to confirm
             document.getElementById("location").innerHTML = `Latitude: ${latitude}, Longitude: ${longitude}`;
 
